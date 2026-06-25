@@ -1,0 +1,430 @@
+# Git for DevOps Jobs (Everything You Actually Need)
+
+## 1. First Time Setup
+
+```bash
+git --version
+```
+
+Check Git is installed.
+
+```bash
+git config --global user.name "Muhammad Imran"
+git config --global user.email "imran@gmail.com"
+```
+
+Set your name and email.
+
+Check:
+
+```bash
+git config --list
+```
+
+---
+
+# 2. Create New Project
+
+Create folder:
+
+```bash
+mkdir MyProject
+cd MyProject
+```
+
+Initialize Git:
+
+```bash
+git init
+```
+
+Git now starts tracking this project.
+
+---
+
+# 3. Check Files
+
+```bash
+git status
+```
+
+Shows:
+
+* Modified files
+* New files
+* Deleted files
+
+Example:
+
+```bash
+Untracked files:
+test.txt
+```
+
+---
+
+# 4. Add Files
+
+Add one file:
+
+```bash
+git add test.txt
+```
+
+Add all files:
+
+```bash
+git add .
+```
+
+---
+
+# 5. Save Changes (Commit)
+
+```bash
+git commit -m "Added login page"
+```
+
+Example:
+
+```bash
+git commit -m "Added Dockerfile"
+```
+
+Think of commit as a save point.
+
+---
+
+# 6. View History
+
+```bash
+git log
+```
+
+Short version:
+
+```bash
+git log --oneline
+```
+
+Example:
+
+```bash
+8f52a1 Added Dockerfile
+4d21c2 First Commit
+```
+
+---
+
+# 7. Connect to GitHub
+
+```bash
+git remote add origin https://github.com/user/project.git
+```
+
+Check:
+
+```bash
+git remote -v
+```
+
+---
+
+# 8. Upload Code to GitHub
+
+First push:
+
+```bash
+git push -u origin main
+```
+
+Later:
+
+```bash
+git push
+```
+
+---
+
+# 9. Download Existing Project
+
+```bash
+git clone https://github.com/user/project.git
+```
+
+Move inside:
+
+```bash
+cd project
+```
+
+---
+
+# 10. Get Latest Code
+
+```bash
+git pull
+```
+
+or
+
+```bash
+git pull origin main
+```
+
+Used every day in companies.
+
+---
+
+# 11. Branches
+
+Check branches:
+
+```bash
+git branch
+```
+
+Create branch:
+
+```bash
+git branch feature-login
+```
+
+Switch branch:
+
+```bash
+git checkout feature-login
+```
+
+Create and switch:
+
+```bash
+git checkout -b feature-login
+```
+
+Modern command:
+
+```bash
+git switch feature-login
+```
+
+---
+
+# 12. Merge Branch
+
+Go to main:
+
+```bash
+git checkout main
+```
+
+Merge:
+
+```bash
+git merge feature-login
+```
+
+---
+
+# 13. Stash (Temporary Save)
+
+Save unfinished work:
+
+```bash
+git stash
+```
+
+Restore:
+
+```bash
+git stash pop
+```
+
+---
+
+# 14. Undo Changes
+
+Discard changes:
+
+```bash
+git restore test.txt
+```
+
+Remove staged file:
+
+```bash
+git restore --staged test.txt
+```
+
+Undo last commit:
+
+```bash
+git reset --soft HEAD~1
+```
+
+---
+
+# 15. Ignore Files
+
+Create:
+
+```bash
+touch .gitignore
+```
+
+Example:
+
+```text
+node_modules/
+.env
+*.log
+```
+
+Git won't upload these files.
+
+---
+
+# 16. Resolve Merge Conflicts
+
+Conflict:
+
+```text
+<<<<<<< HEAD
+My Code
+=======
+Their Code
+>>>>>>> main
+```
+
+Manually edit file.
+
+Then:
+
+```bash
+git add .
+git commit -m "Resolved conflict"
+```
+
+---
+
+# 17. Daily DevOps Workflow
+
+Morning:
+
+```bash
+git pull origin main
+```
+
+Make changes.
+
+Check:
+
+```bash
+git status
+```
+
+Add:
+
+```bash
+git add .
+```
+
+Commit:
+
+```bash
+git commit -m "Updated Jenkins pipeline"
+```
+
+Push:
+
+```bash
+git push origin main
+```
+
+---
+
+# 18. Real Company Workflow
+
+```text
+GitHub Repository
+        ↓
+git clone
+        ↓
+Create Branch
+        ↓
+Make Changes
+        ↓
+git add .
+        ↓
+git commit
+        ↓
+git push
+        ↓
+Pull Request
+        ↓
+Merge
+        ↓
+Jenkins Pipeline Runs
+        ↓
+Docker Build
+        ↓
+Kubernetes Deploy
+```
+
+---
+
+# 19. Most Important Commands (Memorize These)
+
+```bash
+git clone
+git init
+git status
+git add .
+git commit -m "message"
+git push
+git pull
+git branch
+git checkout
+git switch
+git merge
+git log --oneline
+git stash
+git stash pop
+git restore
+git reset
+git remote -v
+```
+
+# DevOps Interview Questions
+
+### What is Git?
+
+Version Control System used to track code changes.
+
+### Difference between Git and GitHub?
+
+* Git = Tool installed on PC.
+* GitHub = Website where Git repositories are stored.
+
+### Difference between Pull and Push?
+
+* Pull = Download latest code.
+* Push = Upload your code.
+
+### What is a Branch?
+
+A separate copy of code for developing features safely.
+
+### What is a Commit?
+
+A saved snapshot of project changes.
+
+### What is Merge?
+
+Combining one branch into another.
+
+### What is .gitignore?
+
+File that tells Git which files to ignore.
+
+If you can perform all commands above on a sample project and answer these interview questions, you're ready for most fresher/junior DevOps Git interviews.
