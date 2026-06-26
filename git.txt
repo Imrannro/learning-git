@@ -1,430 +1,78 @@
-# Git for DevOps Jobs (Everything You Actually Need)
+# Git Commands Cheat Sheet (Correct Order)
 
-## 1. First Time Setup
+1. **`git init`** → Initialize a new Git repository.
 
-```bash
-git --version
-```
+2. **`git config --global user.name "Your Name"`** → Set your Git username (one-time setup).
 
-Check Git is installed.
+3. **`git config --global user.email "you@example.com"`** → Set your Git email (one-time setup).
 
-```bash
-git config --global user.name "Muhammad Imran"
-git config --global user.email "imran@gmail.com"
-```
+4. **`git config --list`** → View current Git configuration.
 
-Set your name and email.
+5. **`git status`** → Check the current status of your repository.
 
-Check:
+6. **`git add <filename>`** → Stage a specific file (e.g., **`git add readme`**).
 
-```bash
-git config --list
-```
+7. **`git add .`** *(or* **`git add ./`***)* → Stage all changed/new files.
 
----
+8. **`git commit -m "Commit message"`** → Save staged changes as a commit.
 
-# 2. Create New Project
+9. **`git log`** → View complete commit history.
 
-Create folder:
+10. **`git log --oneline`** → View short commit history.
 
-```bash
-mkdir MyProject
-cd MyProject
-```
+11. **`git checkout <commit-id>`** → View a previous commit (Detached HEAD).
 
-Initialize Git:
+12. **`git checkout main`** *(or* **`git checkout master`***)* → Switch back to a branch.
 
-```bash
-git init
-```
+13. **`git branch`** → List all local branches.
 
-Git now starts tracking this project.
+14. **`git branch -M main`** → Rename the current branch to **main**.
 
----
+15. **`git checkout -b <branch-name>`** → Create and switch to a new branch.
 
-# 3. Check Files
+16. **`git switch <branch-name>`** → Switch branches (new Git command).
 
-```bash
-git status
-```
+17. **`git remote add origin <repository-url>`** → Connect local repository to GitHub.
 
-Shows:
+18. **`git remote -v`** → Show connected remote repositories.
 
-* Modified files
-* New files
-* Deleted files
+19. **`git push -u origin main`** → First push of the main branch to GitHub.
 
-Example:
+20. **`git push -u origin <branch-name>`** → First push of a new branch.
 
-```bash
-Untracked files:
-test.txt
-```
+21. **`git push`** → Push latest commits to GitHub.
+
+22. **`git pull`** → Download and merge the latest changes from GitHub.
+
+23. **`git clone <repository-url>`** → Download an existing GitHub repository.
+
+24. **`git diff`** → View changes before committing.
+
+25. **`git restore --staged <filename>`** → Unstage a staged file.
+
+26. **`git branch -d <branch-name>`** → Delete a local branch.
+
+27. **`git push origin --delete <branch-name>`** → Delete a branch from GitHub.
 
 ---
 
-# 4. Add Files
+## Daily Git Workflow
 
-Add one file:
-
-```bash
-git add test.txt
-```
-
-Add all files:
-
-```bash
-git add .
-```
+**`git status`** → Check changes
+**`git add .`** → Stage changes
+**`git commit -m "Your message"`** → Save changes
+**`git push`** → Upload changes to GitHub
+**`git pull`** → Get the latest changes from GitHub
 
 ---
 
-# 5. Save Changes (Commit)
-
-```bash
-git commit -m "Added login page"
-```
-
-Example:
-
-```bash
-git commit -m "Added Dockerfile"
-```
-
-Think of commit as a save point.
-
----
-
-# 6. View History
-
-```bash
-git log
-```
-
-Short version:
-
-```bash
-git log --oneline
-```
-
-Example:
-
-```bash
-8f52a1 Added Dockerfile
-4d21c2 First Commit
-```
-
----
-
-# 7. Connect to GitHub
-
-```bash
-git remote add origin https://github.com/user/project.git
-```
-
-Check:
-
-```bash
-git remote -v
-```
-
----
-
-# 8. Upload Code to GitHub
-
-First push:
-
-```bash
-git push -u origin main
-```
-
-Later:
-
-```bash
-git push
-```
-
----
-
-# 9. Download Existing Project
-
-```bash
-git clone https://github.com/user/project.git
-```
-
-Move inside:
-
-```bash
-cd project
-```
-
----
-
-# 10. Get Latest Code
-
-```bash
-git pull
-```
-
-or
-
-```bash
-git pull origin main
-```
-
-Used every day in companies.
-
----
-
-# 11. Branches
-
-Check branches:
-
-```bash
-git branch
-```
-
-Create branch:
-
-```bash
-git branch feature-login
-```
-
-Switch branch:
-
-```bash
-git checkout feature-login
-```
-
-Create and switch:
-
-```bash
-git checkout -b feature-login
-```
-
-Modern command:
-
-```bash
-git switch feature-login
-```
-
----
-
-# 12. Merge Branch
-
-Go to main:
-
-```bash
-git checkout main
-```
-
-Merge:
-
-```bash
-git merge feature-login
-```
-
----
-
-# 13. Stash (Temporary Save)
-
-Save unfinished work:
-
-```bash
-git stash
-```
-
-Restore:
-
-```bash
-git stash pop
-```
-
----
-
-# 14. Undo Changes
-
-Discard changes:
-
-```bash
-git restore test.txt
-```
-
-Remove staged file:
-
-```bash
-git restore --staged test.txt
-```
-
-Undo last commit:
-
-```bash
-git reset --soft HEAD~1
-```
-
----
-
-# 15. Ignore Files
-
-Create:
-
-```bash
-touch .gitignore
-```
-
-Example:
-
-```text
-node_modules/
-.env
-*.log
-```
-
-Git won't upload these files.
-
----
-
-# 16. Resolve Merge Conflicts
-
-Conflict:
-
-```text
-<<<<<<< HEAD
-My Code
-=======
-Their Code
->>>>>>> main
-```
-
-Manually edit file.
-
-Then:
-
-```bash
-git add .
-git commit -m "Resolved conflict"
-```
-
----
-
-# 17. Daily DevOps Workflow
-
-Morning:
-
-```bash
-git pull origin main
-```
-
-Make changes.
-
-Check:
-
-```bash
-git status
-```
-
-Add:
-
-```bash
-git add .
-```
-
-Commit:
-
-```bash
-git commit -m "Updated Jenkins pipeline"
-```
-
-Push:
-
-```bash
-git push origin main
-```
-
----
-
-# 18. Real Company Workflow
-
-```text
-GitHub Repository
-        ↓
-git clone
-        ↓
-Create Branch
-        ↓
-Make Changes
-        ↓
-git add .
-        ↓
-git commit
-        ↓
-git push
-        ↓
-Pull Request
-        ↓
-Merge
-        ↓
-Jenkins Pipeline Runs
-        ↓
-Docker Build
-        ↓
-Kubernetes Deploy
-```
-
----
-
-# 19. Most Important Commands (Memorize These)
-
-```bash
-git clone
-git init
-git status
-git add .
-git commit -m "message"
-git push
-git pull
-git branch
-git checkout
-git switch
-git merge
-git log --oneline
-git stash
-git stash pop
-git restore
-git reset
-git remote -v
-```
-
-# DevOps Interview Questions
-
-### What is Git?
-
-Version Control System used to track code changes.
-
-### Difference between Git and GitHub?
-
-* Git = Tool installed on PC.
-* GitHub = Website where Git repositories are stored.
-
-### Difference between Pull and Push?
-
-* Pull = Download latest code.
-* Push = Upload your code.
-
-### What is a Branch?
-
-A separate copy of code for developing features safely.
-
-### What is a Commit?
-
-A saved snapshot of project changes.
-
-### What is Merge?
-
-Combining one branch into another.
-
-### What is .gitignore?
-
-File that tells Git which files to ignore.
-
-If you can perform all commands above on a sample project and answer these interview questions, you're ready for most fresher/junior DevOps Git interviews.
+## First-Time GitHub Workflow
+
+**`git init`** → Create repository
+**`git config --global user.name "Your Name"`** → Set username
+**`git config --global user.email "you@example.com"`** → Set email
+**`git add .`** → Stage files
+**`git commit -m "Initial commit"`** → First commit
+**`git branch -M main`** → Rename branch to main
+**`git remote add origin <repository-url>`** → Connect GitHub repository
+**`git push -u origin main`** → Push project to GitHub
